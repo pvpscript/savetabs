@@ -1,0 +1,18 @@
+{
+	"name": "Save tabs",
+	"version": "0.0.1",
+	"description": "Save opened urls for every open tab and every opened window",
+	"manifest_version": 2,
+	"permissions": ["tabs", "downloads"],
+
+	"icons": {},
+
+	"background": {
+		"scripts": ["background_scripts/background.js"],
+		"persistent": false
+	},
+	"browser_action": {
+		"default_title": "Save tabs",
+		"default_popup": "popup/popup.html"
+	}
+}
