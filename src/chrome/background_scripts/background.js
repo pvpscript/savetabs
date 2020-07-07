@@ -52,6 +52,28 @@ function plainText(tabs, raw) {
 }
 
 function json(tabs) {
+	const tabObj = {};
+	tabs.map(t => {
+		(winList = tabObj[t.windowId])
+			? winList.push({
+				title: t.title,
+				url: t.url
+			})
+			: tabObj[t.windowId] = [{
+				title: t.title,
+				url: t.url
+			}]
+	});
+
+	//console.log(tabObj);
+	const url = createBlobUrl(JSON.stringify(tabObj), "text/json");
+
+	chrome.downloads.download({
+		url: url,
+		filename: "tabs.json",
+		saveAs: true
+	}, (downloadId) => {
+	});
 }
 
 const methods = {
