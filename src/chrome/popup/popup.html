@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <body>
+  <form id="opt-form" action="#">
+    <div id="field-group" class="field-group">
+      <fieldset>
+        <legend>Window options</legend>
+        <div class="window-options" id="window-options">
+          <div>
+            <input type="radio" id="cwin" name="wintype" checked>
+            <label for="cwin">Current window</label>
+          </div>
+          <div>
+            <input type="radio" id="ewin" name="wintype">
+            <label for="ewin">Every window</label>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Format Options</legend>
+        <div class="format-options" id="format-options">
+          <div>
+            <input type="radio" name="format" id="plaintext" checked>
+            <label for="plaintext">Plain text</label>
+          </div>
+          <div class="raw">
+            <input type="checkbox" id="raw" disabled>
+            <label for="raw">Raw copy</label>
+          </div>
+          <div>
+            <input type="radio" name="format" id="json">
+            <label for="json">JSON</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <input id="submit" class="submit" type="submit" value="Save URLs">
+  </form>
+  </body>
+</html>

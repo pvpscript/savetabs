@@ -1,0 +1,22 @@
+body {
+  width: 400px;
+}
+
+.field-group {
+  display: flex;
+  width: 100%;
+}
+
+fieldset {
+  flex-grow: 1;
+}
+
+.format-options .raw {
+  position: relative;
+  left: 15px;
+}
+
+.submit {
+  width: 100%;
+  border: 0px;
+}
