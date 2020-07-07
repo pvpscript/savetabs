@@ -5,6 +5,8 @@
 	"manifest_version": 2,
 	"permissions": ["tabs", "downloads"],
 
+	"options_page": "view/options/options.html",
+
 	"icons": {
 		"128": "icons/icon128.png",
 		"96": "icons/icon96.png",
