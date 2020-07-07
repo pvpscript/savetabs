@@ -1,5 +1,5 @@
 body {
-  width: 400px;
+  width: 300px;
 }
 
 .field-group {
@@ -7,7 +7,13 @@ body {
   width: 100%;
 }
 
+legend {
+  background-color: black;
+  color: white;
+}
+
 fieldset {
+  border-color: black;
   flex-grow: 1;
 }
 
