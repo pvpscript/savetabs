@@ -11,7 +11,7 @@ form.addEventListener("submit", (e) => {
 	console.log(elements);
 
 	chrome.runtime.sendMessage({
-		wOpt: elements['cwin'].checked,
+		wOpt: elements['cwin'].checked ? true : undefined,
 		type: null
 	});
 });
