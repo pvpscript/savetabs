@@ -21,8 +21,5 @@ form.addEventListener("submit", (e) => {
 });
 
 fgroup.addEventListener("change", (e) => {
-  raw.disabled = !(
-  	(e.target.id == "ewin" && ptext.checked) ||
-  	(e.target.id == "plaintext" && ewin.checked)
-  );
+    raw.disabled = !(ptext.checked && ewin.checked);
 });
