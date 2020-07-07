@@ -22,4 +22,7 @@ form.addEventListener("submit", (e) => {
 
 fgroup.addEventListener("change", (e) => {
     raw.disabled = !(ptext.checked && ewin.checked);
+    if (raw.disabled) {
+	    raw.checked = false;
+    }
 });
