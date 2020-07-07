@@ -12,7 +12,11 @@ form.addEventListener("submit", (e) => {
 
 	chrome.runtime.sendMessage({
 		wOpt: elements['cwin'].checked ? true : undefined,
-		type: null
+		type: elements['plaintext'].checked
+			? (elements['raw'].checked
+				? "plain_text_raw"
+				: "plain_text")
+			: "json",
 	});
 });
 
