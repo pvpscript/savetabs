@@ -5,7 +5,7 @@ function createBlobUrl(content, type) {
 	return url;
 }
 
-function plainText(tabs, raw) {
+function plainText(tabs, save, raw) {
 	let content = "";
 
 	if (!raw) {
@@ -37,12 +37,12 @@ function plainText(tabs, raw) {
 	chrome.downloads.download({
 		url: url,
 		filename: "plain_text.txt",
-		saveAs: true
+		saveAs: save,
 	}, (downloadId) => {
 	});
 }
 
-function json(tabs) {
+function json(tabs, save, readable) {
 	const tabObj = {};
 
 	tabs.map(t => {
@@ -57,20 +57,24 @@ function json(tabs) {
 			}]
 	});
 
-	const url = createBlobUrl(JSON.stringify(tabObj), "text/json");
+	const content = readable
+		? JSON.stringify(tabObj, null, "\t")
+		: JSON.stringify(tabObj);
+	const url = createBlobUrl(content, "text/json");
 
 	chrome.downloads.download({
 		url: url,
 		filename: "tabs.json",
-		saveAs: true
+		saveAs: save,
 	}, (downloadId) => {
 	});
 }
 
 const methods = {
-	"plain_text": (tabs) => plainText(tabs, false),
-	"plain_text_raw": (tabs) => plainText(tabs, true),
-	"json": (tabs) => json(tabs)
+	"ptxt": (tabs, save) => plainText(tabs, save, false),
+	"ptxtr": (tabs, save) => plainText(tabs, save, true),
+	"jsonm": (tabs, save) => json(tabs, save, false),
+	"jsonr": (tabs, save) => json(tabs, save, true),
 };
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -78,7 +82,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 	const action = methods[request.type];
 
 	chrome.tabs.query(queryInfo, (tabs) => {
-		action(tabs);
+		action(tabs, request.save);
 		console.log("Query info");
 		console.log(queryInfo);
 		console.log(tabs);

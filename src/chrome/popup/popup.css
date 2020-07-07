@@ -19,7 +19,7 @@ fieldset {
   flex-grow: 1;
 }
 
-.format-options .raw {
+.format-options .sub-opt {
   position: relative;
   left: 15px;
 }

@@ -26,7 +26,7 @@
             <input type="radio" name="format" id="plaintext" checked>
             <label for="plaintext">Plain text</label>
           </div>
-          <div class="raw">
+          <div class="sub-opt">
             <input type="checkbox" id="raw">
             <label for="raw">Raw copy</label>
           </div>
@@ -34,10 +34,19 @@
             <input type="radio" name="format" id="json">
             <label for="json">JSON</label>
           </div>
+	  <div class="sub-opt">
+            <input type="radio" name="output" id="mini" checked disabled>
+            <label for="mini">Minified</label>
+          </div>
+          <div class="sub-opt">
+            <input type="radio" name="output" id="readable" disabled>
+            <label for="readable">Readable</label>
+          </div>
         </div>
       </fieldset>
     </div>
-    <input id="submit" class="submit" type="submit" value="Save URLs">
+    <input class="submit" name="saveas" type="submit" value="Save As">
+    <input class="submit" name="quicksave" type="submit" value="Quicksave">
   </form>
   <script src="popup.js"></script>
   </body>
