@@ -6,6 +6,7 @@ function createBlobUrl(content, type) {
 }
 
 function plainText(tabs, save, raw) {
+	const date = new Date();
 	let content = "";
 
 	if (!raw) {
@@ -33,16 +34,19 @@ function plainText(tabs, save, raw) {
 	}
 	
 	const url = createBlobUrl(content, "text/plain");
+	const filename = date.toISOString().replace(/:/g, "-") + "-tabs" +
+		(raw ? "-raw" : "") + ".txt";
 
 	chrome.downloads.download({
 		url: url,
-		filename: "plain_text.txt",
+		filename: filename,
 		saveAs: save,
 	}, (downloadId) => {
 	});
 }
 
 function json(tabs, save, readable) {
+	const date = new Date();
 	const tabObj = {};
 
 	tabs.map(t => {
@@ -61,10 +65,12 @@ function json(tabs, save, readable) {
 		? JSON.stringify(tabObj, null, "\t")
 		: JSON.stringify(tabObj);
 	const url = createBlobUrl(content, "text/json");
+	const filename = date.toISOString().replace(/:/g, "-") + "-tabs-" +
+		(readable ? "readable" : "minified") + ".json";
 
 	chrome.downloads.download({
 		url: url,
-		filename: "tabs.json",
+		filename: filename,
 		saveAs: save,
 	}, (downloadId) => {
 	});
