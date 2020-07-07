@@ -5,7 +5,13 @@
 	"manifest_version": 2,
 	"permissions": ["tabs", "downloads"],
 
-	"icons": {},
+	"icons": {
+		"128": "icons/icon128.png",
+		"96": "icons/icon96.png",
+		"64": "icons/icon64.png",
+		"32": "icons/icon32.png",
+		"16": "icons/icon16.png"
+	},
 
 	"background": {
 		"scripts": ["background_scripts/background.js"],
