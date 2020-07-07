@@ -1,12 +1,3 @@
-var text = "Just a sample text to test stuff";
-
-var blob = new Blob([text], {type: "text/plain"});
-var url = URL.createObjectURL(blob);
-console.log(`URL: ${url}`);
-
-chrome.downloads.download({url: url, filename: "test_name", saveAs: true}, (downloadId) => {
-});
-
 function createBlobUrl(content, type) {
 	const blob = new Blob([content], {type: type});
 	const url = URL.createObjectURL(blob);
@@ -53,6 +44,7 @@ function plainText(tabs, raw) {
 
 function json(tabs) {
 	const tabObj = {};
+
 	tabs.map(t => {
 		(winList = tabObj[t.windowId])
 			? winList.push({
@@ -65,7 +57,6 @@ function json(tabs) {
 			}]
 	});
 
-	//console.log(tabObj);
 	const url = createBlobUrl(JSON.stringify(tabObj), "text/json");
 
 	chrome.downloads.download({
