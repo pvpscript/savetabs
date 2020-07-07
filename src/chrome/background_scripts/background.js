@@ -15,25 +15,30 @@ function createBlobUrl(content, type) {
 }
 
 function plainText(tabs, raw) {
-	const tabMap = new Map();
-	tabs.map(t => {
-		(winList = tabMap.get(t.windowId))
-			? winList.push(t)
-			: tabMap.set(t.windowId, [t])
-	});
-
 	let content = "";
-	let newline = false;
 
-	for (let k of tabMap.keys()) {
-		const wTabs = tabMap.get(k);
-		if (!raw) {
+	if (!raw) {
+		const tabMap = new Map();
+		tabs.map(t => {
+			(winList = tabMap.get(t.windowId))
+				? winList.push(t)
+				: tabMap.set(t.windowId, [t])
+		});
+
+		let newline = false;
+
+		for (let k of tabMap.keys()) {
+			const wTabs = tabMap.get(k);
+
 			content += newline ? "\n" : "";
 			content += `---------- WINDOW ${k} ----------\n`;
-
 			newline = true;
+
+			wTabs.map(t => content += t.url + "\n");
+
 		}
-		wTabs.map(t => content += t.url + "\n");
+	} else {
+		tabs.map(t => content += t.url + "\n");
 	}
 	
 	const url = createBlobUrl(content, "text/plain");
