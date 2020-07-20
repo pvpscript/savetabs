@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Options page</title>
-	</head>
-	<body>
-		<h1>This is the options page!</h1>
-		<h2>Soon, here will have a helper image, teaching how to use the extension</h2>
-		<h2>There will also be a feedback page, leading this extension's github repository</h2>
-	</body>
+  <head>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <div class="sidebar">
+      <a href="#how-to-use">How to use</a>
+      <a href="#settings">Settings</a>
+      <a href="#feedback">Feedback</a>
+    </div>
+    <div class="main">
+      <div id="how-to-use" class="tab-content">
+        <h1>How to use</h1>
+        <p>
+	How to use the extension.
+        </p>
+      </div>
+      <div id="settings" class="tab-content">
+        <h1>Settings</h1>
+	<p>Extension settings</p>
+      </div>
+      <div id="feedback" class="tab-content">
+        <h1>Feedback</h1>
+	<p>Feedback page</p>
+      </div>
+    </div>
+  <script src="options.js"></script>
+  </body>
 </html>
