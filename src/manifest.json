@@ -1,6 +1,6 @@
 {
 	"name": "Save tabs",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "Save opened urls for every open tab and every opened window",
 	"manifest_version": 2,
 	"permissions": ["tabs", "downloads"],
